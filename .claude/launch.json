@@ -1,0 +1,18 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "resume-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 3000,
+      "autoPort": true
+    },
+    {
+      "name": "resume-static",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["-y", "serve", "out", "-l", "4321"],
+      "port": 4321
+    }
+  ]
+}

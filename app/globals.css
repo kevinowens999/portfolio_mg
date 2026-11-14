@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+main section[id] { scroll-margin-top: 96px; }
+
+@keyframes slogan-caret { 0%, 45% { opacity: 1; } 50%, 95% { opacity: 0; } }
+.slogan-caret { animation: slogan-caret 1.1s step-end infinite; }
+@media (prefers-reduced-motion: reduce) { .slogan-caret { animation: none; } }
+
+.hero-monogram { --mg-color: #334155; --mg-core: #1e293b; }
+.dark .hero-monogram { --mg-color: #7588ff; --mg-core: #d6f1ff; }
+.mg-outline { stroke: var(--mg-color); stroke-width: 2; opacity: .12; }
+.dark .mg-outline { opacity: .2; }
+.mg-neon-halo { stroke: var(--mg-color); stroke-width: 9; opacity: .5; filter: drop-shadow(0 0 7px var(--mg-color)); }
+.mg-neon-core { stroke: var(--mg-color); stroke-width: 2.5; opacity: .85; }
+.dark .mg-neon-core { stroke: var(--mg-core); opacity: .9; }
+.dark .mg-neon-halo { opacity: .7; }
+.mg-light { stroke-dasharray: 160 180 40 260; animation: mg-light-flow 16s linear infinite; }
+.mg-light-halo { stroke: var(--mg-color); stroke-width: 7; opacity: .35; filter: drop-shadow(0 0 6px var(--mg-color)); }
+.mg-light-core { stroke: var(--mg-core); stroke-width: 2.5; opacity: .8; }
+.dark .mg-light-halo { opacity: .5; }
+@keyframes mg-light-flow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -1920; } }
+@media (prefers-reduced-motion: reduce) { .mg-light { animation: none; } }
+
+@keyframes navigation-beacon {
+  0%, 100% { box-shadow: 0 4px 20px hsl(var(--primary) / .12), 0 0 0 0 hsl(var(--primary) / .1); }
+  50% { box-shadow: 0 4px 26px hsl(var(--primary) / .24), 0 0 0 6px hsl(var(--primary) / .06); }
+}
+
+.navigation-beacon { animation: navigation-beacon 3s ease-in-out infinite; transform-origin: top left; }
+.navigation-beacon:hover, .navigation-beacon:focus-visible { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .navigation-beacon { animation: none; } }
+
+.developer-avatar-frame {
+  background: radial-gradient(circle at 40% 30%, #ffffff 0%, #e0e7ff 65%, #c7d2fe 100%);
+  box-shadow: inset 0 1px 3px rgb(255 255 255 / .75);
+}
+.dark .developer-avatar-frame {
+  background: radial-gradient(circle at 40% 30%, #e0e7ff 0%, #a5b4fc 65%, #818cf8 100%);
+  border-color: rgb(165 180 252 / .65);
+}
+@keyframes developer-idle {
+  0%, 100% { transform: translateY(1px) rotate(-2deg); }
+  50% { transform: translateY(-2px) rotate(2deg); }
+}
+@keyframes developer-shadow {
+  0%, 100% { transform: scaleX(1); opacity: .5; }
+  50% { transform: scaleX(.8); opacity: .3; }
+}
+.developer-avatar { animation: developer-idle 4.5s ease-in-out infinite; transform-origin: 50% 80%; }
+.developer-avatar-shadow { animation: developer-shadow 4.5s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .developer-avatar, .developer-avatar-shadow { animation: none; }
+}
+
+body {
+  font-family: var(--font-ui), system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+code,
+kbd,
+.mono {
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  /* "Cool Graphite" brand palette (design_handoff_finx_brand/tokens.css)
+     expressed as shadcn HSL vars. Light: bg #F7F8FA, text #14161A,
+     line #E5E8EC, accent indigo #4457E8. */
+  :root {
+    --background: 220 23% 97%;
+    --foreground: 220 13% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 9%;
+    --primary: 233 78% 59%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 233 100% 97%;
+    --secondary-foreground: 234 57% 49%;
+    --muted: 214 16% 93%;
+    --muted-foreground: 215 14% 34%;
+    --accent: 233 100% 97%;
+    --accent-foreground: 234 57% 49%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214 16% 91%;
+    --input: 214 16% 91%;
+    --ring: 233 78% 59%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.875rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+  /* Dark: canvas #14161A, surface #1B1E24, line #262B33, accent #6E7BFF
+     (only the lighter indigo goes on ink, per the brand book). */
+  .dark {
+    --background: 220 13% 9%;
+    --foreground: 220 23% 97%;
+    --card: 220 14% 12%;
+    --card-foreground: 220 23% 97%;
+    --popover: 220 14% 12%;
+    --popover-foreground: 220 23% 97%;
+    --primary: 235 100% 72%;
+    --primary-foreground: 220 13% 9%;
+    --secondary: 231 36% 18%;
+    --secondary-foreground: 235 100% 77%;
+    --muted: 217 15% 17%;
+    --muted-foreground: 215 12% 70%;
+    --accent: 231 36% 18%;
+    --accent-foreground: 235 100% 77%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 217 15% 17%;
+    --input: 217 15% 17%;
+    --ring: 235 100% 72%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

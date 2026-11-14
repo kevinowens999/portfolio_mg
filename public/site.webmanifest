@@ -1,0 +1,14 @@
+{
+  "name": "Matthew Garner | Portfolio",
+  "short_name": "Matthew Garner",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#F7F8FA",
+  "background_color": "#F7F8FA",
+  "display": "standalone"
+}
